@@ -628,6 +628,111 @@ ul {
   overflow-x: auto; /* Enable horizontal scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   margin: var(--spacing-md) 0;
+  display: flex; /* Center the tables horizontally */
+  justify-content: center; /* Center the tables horizontally */
+}
+
+/* Base table grid styles */
+.table-grid {
+  display: grid;
+  gap: 1px;
+  background-color: var(--border-color);
+  margin: 0;
+  /* Set optimal widths for readability and appearance */
+  width: max-content; /* Use the natural content size */
+  max-width: 100%; /* Ensure it doesn't overflow the container */
+}
+
+/* Specific table configurations - with optimized widths */
+.table-grid.four-col {
+  grid-template-columns: minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(
+      100px,
+      0.8fr
+    ) minmax(160px, 1.2fr);
+  max-width: 900px; /* Prevent excessive stretching on large screens */
+}
+
+.table-grid.three-col {
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Prevent excessive stretching on large screens */
+}
+
+.circuits-table {
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Maintain comfortable reading width */
+}
+
+/* Base table grid styles */
+.table-grid {
+  display: grid;
+  min-width: 600px; /* Ensures table is wide enough on mobile */
+  gap: 1px;
+  background-color: var(--border-color);
+  margin: 0; /* Remove margin as it's now on the container */
+}
+
+.circuits-table {
+  grid-template-columns: 40px auto 1fr; /* Set columns for circuits table */
+  min-width: 500px; /* Slightly narrower for the circuits table */
+}
+
+.table-header {
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-sm);
+  font-weight: bold;
+  text-align: center;
+}
+
+.table-cell {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+.table-span-3 {
+  grid-column: span 3;
+}
+
+.alt-row {
+  background-color: var(--bg-primary);
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.number-column {
+  font-weight: bold;
+  text-align: center;
+  padding-right: 0;
+}
+
+.page-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.nav-button {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+}
+
+/* Table styles */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: var(--spacing-md) 0;
   /* Add subtle visual cue for scrolling capability */
   background-image: linear-gradient(
       to right,
@@ -643,15 +748,14 @@ ul {
   background-attachment: local, local, scroll, scroll;
 }
 
-/* Table styles - Enhanced for better horizontal scrolling */
+/* Table styles - Fixed for proper horizontal scrolling */
 .table-container {
   width: 100%;
   overflow-x: auto; /* Enable horizontal scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   margin: var(--spacing-md) 0;
-  position: relative; /* For positioning the scroll indicator */
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  display: flex; /* Center the tables horizontally */
+  justify-content: center; /* Center the tables horizontally */
 }
 
 /* Base table grid styles */
@@ -660,127 +764,45 @@ ul {
   gap: 1px;
   background-color: var(--border-color);
   margin: 0;
-  /* Set minimum widths to prevent excessive narrowing */
-  width: 100%;
+  /* Set optimal widths for readability and appearance */
+  width: max-content; /* Use the natural content size */
+  max-width: 100%; /* Ensure it doesn't overflow the container */
 }
 
-/* Specific table configurations */
+/* Specific table configurations - with optimized widths */
 .table-grid.four-col {
-  grid-template-columns: repeat(4, minmax(150px, 1fr));
-  min-width: 600px; /* Ensures table is wide enough on mobile */
+  grid-template-columns: minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(
+      100px,
+      0.8fr
+    ) minmax(160px, 1.2fr);
+  max-width: 900px; /* Prevent excessive stretching on large screens */
 }
 
 .table-grid.three-col {
-  grid-template-columns: 40px auto 1fr;
-  min-width: 500px; /* Slightly narrower for three-column tables */
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Prevent excessive stretching on large screens */
 }
 
 .circuits-table {
-  grid-template-columns: 40px auto 1fr;
-  min-width: 500px; /* Maintain minimum width */
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Maintain comfortable reading width */
 }
 
-/* Scroll indicator that appears only when scrolling is possible */
-.table-container::after {
-  content: "◀ Scroll horizontally ▶";
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* Show the scroll indicator only when content is wider than viewport */
-.table-container::-webkit-scrollbar {
-  height: 6px;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-  background-color: var(--accent-primary);
-  border-radius: 3px;
-}
-
-/* JavaScript will add this class when content overflows */
-.table-container.scrollable::after {
-  opacity: 0.8;
-}
-
-/* Remove conflicting media query styles that stack tables */
+/* Add a subtle indicator for mobile users */
 @media (max-width: 768px) {
-  /* Preserve the correct scrolling behavior */
-  .table-grid {
-    /* Keep the original column setup - no stacking */
-    grid-template-columns: inherit;
+  /* Other responsive styles that DON'T affect tables */
+  .site-title {
+    font-size: var(--font-size-3xl);
   }
 
-  .table-header,
-  .table-cell {
-    /* Prevent spanning across grid */
-    grid-column: auto;
+  /* ...other non-table related responsive styles... */
+
+  .table-container::after {
+    content: "◀ Scroll ▶";
+    display: block;
     text-align: center;
-  }
-
-  .table-span-3 {
-    /* Keep the span-3 behavior */
-    grid-column: span 3;
-  }
-
-  /* ...other responsive styles that don't interfere with tables... */
-}
-
-@media (max-width: 768px) {
-  .table-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .table-header,
-  .table-cell {
-    grid-column: span 4;
-    text-align: left;
-  }
-
-  .circuits-table .table-header,
-  .circuits-table .table-cell {
-    grid-column: span 3;
-  }
-
-  .table-cell.highlight {
-    background-color: var(--bg-tertiary);
-  }
-
-  .table-span-3 {
-    grid-column: span 1;
-  }
-
-  .number-column {
-    display: inline-block; /* Changed from none to inline-block */
-    margin-right: var(--spacing-sm);
-    width: auto;
-    text-align: left;
-  }
-
-  .circuits-table {
-    grid-template-columns: 1fr;
-  }
-
-  /* Add this for better mobile display of the gravity circuits */
-  .circuits-table .table-cell {
-    display: flex;
-    align-items: center;
-    text-align: left;
-  }
-
-  .circuits-table .number-column + .table-cell.highlight {
-    font-weight: bold;
-    margin-left: var(--spacing-xs);
-  }
-
-  .page-navigation {
-    flex-direction: column;
-    align-items: center;
+    padding: var(--spacing-xs) 0;
+    color: var(--accent-primary);
+    font-size: var(--font-size-sm);
   }
 }
