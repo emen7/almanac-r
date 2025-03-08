@@ -770,6 +770,8 @@ ul {
   /* Set optimal widths for readability and appearance */
   width: max-content; /* Use the natural content size */
   max-width: 100%; /* Ensure it doesn't overflow the container */
+  border: 1px solid var(--border-color);
+  border-radius: 0;
 }
 
 /* Specific table configurations - with optimized widths */
@@ -971,6 +973,25 @@ sup,
   /* ...existing styles... */
 }
 
+/* Adjust table column widths for better proportions and add right border */
+.circuits-table {
+  grid-template-columns: 30px minmax(120px, 1fr) minmax(150px, 1fr) !important;
+  max-width: 500px !important; /* Make gravity circuits table narrower */
+  gap: 1px;
+  border-right: 1px solid var(--border-color); /* Add right edge vertical line */
+}
+
+/* Reduce space between title and table in the gravity circuits section */
+#absolute-gravity .panel-content {
+  padding-top: var(
+    --spacing-sm
+  ); /* Reduce top padding specifically for this section */
+}
+
+#absolute-gravity .table-container {
+  margin-top: 0; /* Remove top margin from table container */
+}
+
 /* Adjust table column widths for better proportions */
 .circuits-table {
   grid-template-columns: 30px minmax(120px, 1fr) minmax(150px, 1fr) !important;
@@ -978,11 +999,11 @@ sup,
   gap: 1px;
 }
 
-/* Remove vertical line between number column and circuits */
-.table-grid.three-col {
-  grid-template-columns: 40px minmax(120px, 1fr) minmax(140px, 1fr);
-  max-width: 600px;
-  border-collapse: collapse;
+/* Fix vertical lines on grid tables by adding explicit borders */
+.table-grid {
+  /* ...existing styles... */
+  border: 1px solid var(--border-color);
+  border-radius: 0;
 }
 
 /* Tighten column spacing for specific tables */
