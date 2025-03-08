@@ -912,7 +912,8 @@ sup,
 }
 
 .table-width-70 {
-  max-width: 70%;
+  max-width: 500px; /* Fixed width instead of percentage */
+  width: 100%;
 }
 
 .table-width-80 {
@@ -983,9 +984,9 @@ sup,
 
 /* Reduce space between title and table in the gravity circuits section */
 #absolute-gravity .panel-content {
-  padding-top: var(
-    --spacing-sm
-  ); /* Reduce top padding specifically for this section */
+  padding-top: 0; /* Remove top padding completely */
+  max-width: 500px; /* Match the width of the table */
+  margin: 0 auto; /* Center the content */
 }
 
 #absolute-gravity .table-container {
@@ -1009,4 +1010,38 @@ sup,
 /* Tighten column spacing for specific tables */
 #absolute-gravity .table-grid {
   column-gap: 2px !important;
+}
+
+/* Adjust blockquote width to match table width in gravity circuits section */
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 500px; /* Match the width of the table */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix the mini column issue in gravity circuits table */
+#absolute-gravity .table-grid {
+  /* Use a simpler grid definition without the mini column */
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr; /* Clean column definition */
+  border: 1px solid var(--border-color); /* Single border around the entire table */
+  border-collapse: collapse;
+  background-color: var(--bg-secondary); /* Match cell background */
+  gap: 0; /* Remove gap between cells */
+}
+
+#absolute-gravity .table-cell {
+  border: 1px solid var(--border-color); /* Add borders to each cell */
+  margin: 0; /* Remove any margin */
+}
+
+#absolute-gravity .table-header {
+  border: 1px solid var(--border-color); /* Add borders to headers */
+  background-color: var(--bg-tertiary);
+}
+
+/* Remove any background color from the grid itself */
+#absolute-gravity .table-grid {
+  background-color: transparent;
 }
