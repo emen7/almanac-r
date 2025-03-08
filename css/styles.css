@@ -513,7 +513,7 @@ ul {
 }
 
 .numbered-list li {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var (--spacing-sm);
 }
 
 .footnote {
@@ -561,7 +561,8 @@ ul {
 
 .number-column {
   font-weight: bold;
-  text-align: right;
+  text-align: center; /* Changed from right to center */
+  padding-right: 0; /* Add this to remove extra space */
 }
 
 .page-footer-nav {
@@ -610,11 +611,26 @@ ul {
   }
 
   .number-column {
-    display: none;
+    display: inline-block; /* Changed from none to inline-block */
+    margin-right: var(--spacing-sm);
+    width: auto;
+    text-align: left;
   }
 
   .circuits-table {
     grid-template-columns: 1fr;
+  }
+
+  /* Add this for better mobile display of the gravity circuits */
+  .circuits-table .table-cell {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  .circuits-table .number-column + .table-cell.highlight {
+    font-weight: bold;
+    margin-left: var(--spacing-xs);
   }
 
   .page-navigation {
