@@ -903,3 +903,49 @@ sup,
 
   /* ...existing styles... */
 }
+
+/* Table width variations */
+.table-width-60 {
+  max-width: 60%;
+}
+
+.table-width-70 {
+  max-width: 70%;
+}
+
+.table-width-80 {
+  max-width: 80%;
+}
+
+/* Muted scrollbar styling */
+.table-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+/* For Firefox */
+.table-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-secondary);
+}
+
+/* Simplify scroll indicator text */
+.table-container::before {
+  content: "◀ Scroll ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
