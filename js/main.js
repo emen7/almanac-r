@@ -44,6 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
     changeFontSize(1);
   });
 
+  // Add scroll indicator visibility handling for tables
+  const tableContainers = document.querySelectorAll('.table-container');
+  tableContainers.forEach(container => {
+    // Initial check on load
+    checkScrollability(container);
+    
+    // Check when window resizes
+    window.addEventListener('resize', () => {
+      checkScrollability(container);
+    });
+    
+    // Update scroll indicator when scrolling
+    container.addEventListener('scroll', () => {
+      updateScrollIndicator(container);
+    });
+  });
+
   // Initialize theme
   function initTheme() {
     const savedTheme = localStorage.getItem('theme');
@@ -91,6 +108,26 @@ document.addEventListener('DOMContentLoaded', function() {
   function resetFontSize() {
     document.documentElement.style.fontSize = '16px';
     localStorage.setItem('fontSize', '16px');
+  }
+
+  // Check if a table needs scrolling and add indicator
+  function checkScrollability(container) {
+    if (container.scrollWidth > container.clientWidth) {
+      container.classList.add('scrollable');
+    } else {
+      container.classList.remove('scrollable');
+    }
+  }
+  
+  // Update scroll indicator visibility based on scroll position
+  function updateScrollIndicator(container) {
+    // If at the beginning or end of scrolling, fade the indicator
+    if (container.scrollLeft <= 10 || 
+        container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
+      container.querySelector('::after').style.opacity = '0.3';
+    } else {
+      container.querySelector('::after').style.opacity = '0.8';
+    }
   }
 
   // Keyboard navigation enhancement
