@@ -357,7 +357,7 @@ ul {
 
 .image-credit {
   font-size: var(--font-size-sm);
-  color: var(--accent-secondary);
+  color: var (--accent-secondary);
   text-align: right;
 }
 
@@ -430,4 +430,195 @@ ul {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Page-specific styles for divinity.htm */
+.part-nav,
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.nav-current {
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.page-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.item-list li {
+  padding-left: var(--spacing-sm);
+}
+
+.content-quote {
+  background-color: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+  padding: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.reference-box {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.reference-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.editor-note {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-sm);
+  border-left: 2px solid var(--border-color);
+}
+
+.content-subtitle {
+  color: var(--accent-tertiary);
+  margin-bottom: var(--spacing-md);
+}
+
+.numbered-list {
+  padding-left: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.numbered-list li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footnote {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+}
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  gap: 1px;
+  background-color: var(--border-color);
+  margin: var(--spacing-md) 0;
+}
+
+.circuits-table {
+  grid-template-columns: 40px auto 1fr;
+}
+
+.table-header {
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-sm);
+  font-weight: bold;
+  text-align: center;
+}
+
+.table-cell {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+.table-span-3 {
+  grid-column: span 3;
+}
+
+.alt-row {
+  background-color: var(--bg-primary);
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.number-column {
+  font-weight: bold;
+  text-align: right;
+}
+
+.page-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.nav-button {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+}
+
+/* Responsive adjustments for the tables */
+@media (max-width: 768px) {
+  .table-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-header,
+  .table-cell {
+    grid-column: span 4;
+    text-align: left;
+  }
+
+  .circuits-table .table-header,
+  .circuits-table .table-cell {
+    grid-column: span 3;
+  }
+
+  .table-cell.highlight {
+    background-color: var(--bg-tertiary);
+  }
+
+  .table-span-3 {
+    grid-column: span 1;
+  }
+
+  .number-column {
+    display: none;
+  }
+
+  .circuits-table {
+    grid-template-columns: 1fr;
+  }
+
+  .page-navigation {
+    flex-direction: column;
+    align-items: center;
+  }
 }
