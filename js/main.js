@@ -24,19 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     settingsDropdown.hidden = expanded;
   });
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-    if (!settingsToggle.contains(event.target) && !settingsDropdown.contains(event.target)) {
-      settingsToggle.setAttribute('aria-expanded', 'false');
-      settingsDropdown.hidden = true;
-    }
-  });
-
   // Toggle theme
   themeToggle.addEventListener('click', function() {
     const currentTheme = localStorage.getItem('theme') || 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
     setTheme(newTheme);
   });
 
@@ -53,19 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     changeFontSize(1);
   });
 
-  // Initialize theme from localStorage
+  // Initialize theme
   function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     
     if (savedTheme) {
       setTheme(savedTheme);
     } else {
-      // Default to dark theme
       setTheme('dark');
     }
   }
 
-  // Set the theme
+  // Set theme
   function setTheme(theme) {
     if (theme === 'light') {
       body.classList.add('light-theme');
@@ -78,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('theme', theme);
   }
 
-  // Initialize font size from localStorage
+  // Initialize font size
   function initFontSize() {
     const fontSize = localStorage.getItem('fontSize');
     if (fontSize) {
@@ -89,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Change font size
   function changeFontSize(delta) {
     const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const newSize = currentSize + (delta * 1); // Change by 1px at a time
+    const newSize = currentSize + (delta * 1);
     
-    if (newSize >= 12 && newSize <= 24) { // Limit min and max size
+    if (newSize >= 12 && newSize <= 24) {
       document.documentElement.style.fontSize = newSize + 'px';
       localStorage.setItem('fontSize', newSize + 'px');
     }
