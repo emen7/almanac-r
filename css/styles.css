@@ -587,6 +587,42 @@ ul {
   text-align: center;
 }
 
+/* Row highlighting instead of individual cells */
+.highlight-row {
+  font-weight: bold;
+  background-color: var(--bg-tertiary);
+}
+
+/* Number column styling */
+.number-column {
+  font-weight: bold;
+  text-align: center;
+  padding-right: 0;
+  background-color: var(
+    --bg-tertiary
+  ); /* Different background for number column */
+  width: 40px;
+  min-width: 40px;
+}
+
+/* Circuits table specific styling */
+.circuits-cell {
+  background-color: var(--bg-secondary); /* Consistent background */
+  font-weight: 500; /* Semi-bold to enhance readability */
+}
+
+/* Alternate row styling for better readability */
+.alt-row {
+  background-color: var(
+    --bg-primary
+  ); /* Subtle distinction for alternate rows */
+}
+
+/* Remove the old highlight class that was applying to cells instead of rows */
+.highlight {
+  /* Remove styling that will be replaced by highlight-row */
+}
+
 .table-span-3 {
   grid-column: span 3;
 }
