@@ -684,10 +684,9 @@ ul {
 
 /* Specific table configurations with better mobile support */
 .table-grid.four-col {
-  grid-template-columns: minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(
-      100px,
-      0.8fr
-    ) minmax(160px, 1.2fr);
+  grid-template-columns:
+    minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(100px, 0.8fr)
+    minmax(160px, 1.2fr);
   max-width: 900px;
 }
 
@@ -789,4 +788,79 @@ ul {
         1.2fr
       );
   }
+}
+
+/* Table styles - Improved for better visibility and scroll indication */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--spacing-md) 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+  border: none;
+}
+
+/* Simplify scroll indicator text and position it ONLY ABOVE the table */
+.table-container::before {
+  content: "◀ Scroll ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
+
+/* Show scroll indicator when needed */
+.table-container.scrollable::before {
+  opacity: 0.8;
+}
+
+/* Remove the duplicate scroll indicator that appears below */
+.table-container::after {
+  content: none;
+}
+
+/* Improved footnote and superscript styling */
+sup,
+.footnote-ref {
+  color: var(--accent-primary);
+  font-weight: normal;
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.footnote {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
+}
+
+.footnote sup {
+  color: var(--accent-primary);
+  margin-right: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  /* ...existing styles... */
+
+  /* Remove duplicate scroll indicator on mobile */
+  .table-container::after {
+    content: none;
+  }
+
+  /* Make the scroll indicator more prominent on mobile */
+  .table-container::before {
+    padding: var(--spacing-sm) 0;
+    font-weight: bold;
+  }
+
+  /* ...existing styles... */
 }

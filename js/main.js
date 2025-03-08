@@ -123,15 +123,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
   }
   
-  // Update scroll indicator visibility based on scroll position
+  // Simplified updateScrollIndicator function - we're not managing ::after anymore
   function updateScrollIndicator(container) {
-    // If at the beginning or end of scrolling, fade the indicator
-    if (container.scrollLeft <= 10 || 
-        container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
-      container.querySelector('::after').style.opacity = '0.3';
-    } else {
-      container.querySelector('::after').style.opacity = '0.8';
-    }
+    // We can keep track of scroll position for future enhancements if needed
+    const scrollPercentage = (container.scrollLeft / (container.scrollWidth - container.clientWidth)) * 100;
+    
+    // Could be used for progressive effects later
   }
 
   // Keyboard navigation enhancement
