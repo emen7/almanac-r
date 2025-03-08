@@ -539,8 +539,11 @@ ul {
 }
 
 .content-subtitle {
-  color: var(--accent-tertiary);
+  color: var(
+    --accent-primary
+  ); /* Changed from var(--accent-tertiary) to match main title color */
   margin-bottom: var(--spacing-md);
+  font-weight: 500; /* Add a bit of weight for better readability */
 }
 
 .numbered-list {
