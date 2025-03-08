@@ -585,7 +585,56 @@ ul {
   text-decoration: none;
 }
 
+/* Table styles */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: var(--spacing-md) 0;
+  /* Add subtle visual cue for scrolling capability */
+  background-image: linear-gradient(
+      to right,
+      var(--bg-secondary),
+      var(--bg-secondary)
+    ),
+    linear-gradient(to right, var(--bg-secondary), var(--bg-secondary)),
+    linear-gradient(to right, rgba(0, 153, 204, 0.3), rgba(255, 255, 255, 0)),
+    linear-gradient(to left, rgba(0, 153, 204, 0.3), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-size: 20px 100%, 20px 100%, 15px 100%, 15px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
 /* Responsive adjustments for the tables */
+@media (max-width: 768px) {
+  /* Remove the stacking behavior for tables */
+  .table-grid {
+    grid-template-columns: repeat(4, minmax(100px, 1fr)); /* Keep 4 columns */
+  }
+
+  .circuits-table {
+    grid-template-columns: 40px auto 1fr; /* Keep 3 columns */
+  }
+
+  .table-header,
+  .table-cell {
+    grid-column: auto; /* Reset column spans */
+    text-align: center; /* Keep centered text */
+  }
+
+  .table-span-3 {
+    grid-column: span 3; /* Keep span-3 for special cells */
+  }
+
+  .number-column {
+    display: table-cell; /* Show number column */
+    text-align: center;
+  }
+
+  /* ...existing other responsive code that's still needed... */
+}
+
 @media (max-width: 768px) {
   .table-grid {
     grid-template-columns: 1fr;
