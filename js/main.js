@@ -110,13 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('fontSize', '16px');
   }
 
-  // Check if a table needs scrolling and add indicator
+  // Improved checkScrollability function for more responsive behavior
   function checkScrollability(container) {
-    if (container.scrollWidth > container.clientWidth) {
-      container.classList.add('scrollable');
-    } else {
-      container.classList.remove('scrollable');
-    }
+    // Check on initial load and whenever window size changes
+    setTimeout(() => {
+      // Add small delay to ensure accurate measurements after render
+      if (container.scrollWidth > container.clientWidth + 5) { // Add small buffer
+        container.classList.add('scrollable');
+      } else {
+        container.classList.remove('scrollable');
+      }
+    }, 100);
   }
   
   // Update scroll indicator visibility based on scroll position

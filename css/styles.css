@@ -491,7 +491,7 @@ ul {
   padding: var(--spacing-md);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var (--spacing-md);
 }
 
 .two-column-grid {
@@ -630,122 +630,87 @@ ul {
   margin: var(--spacing-md) 0;
   display: flex; /* Center the tables horizontally */
   justify-content: center; /* Center the tables horizontally */
+  flex-direction: column; /* Stack the scroll indicator above the table */
+  position: relative; /* For positioning elements */
+  padding: 0;
+  border: none;
 }
 
-/* Base table grid styles */
+/* Move scroll indicator ABOVE the table */
+.table-container::before {
+  content: "◀ Scroll horizontally ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
+
+/* Show scroll indicator when needed (added by JS) */
+.table-container.scrollable::before {
+  opacity: 0.8; /* Make visible */
+}
+
+/* Ensure tables start from the left edge properly on mobile */
 .table-grid {
-  display: grid;
-  gap: 1px;
-  background-color: var(--border-color);
-  margin: 0;
-  /* Set optimal widths for readability and appearance */
-  width: max-content; /* Use the natural content size */
-  max-width: 100%; /* Ensure it doesn't overflow the container */
+  margin-left: 0;
+  padding-left: 0;
+  min-width: 100%;
+  width: max-content; /* Use natural content size */
 }
 
-/* Specific table configurations - with optimized widths */
+/* Create balanced content containers for text around tables */
+.content-section {
+  max-width: 700px; /* Match the max-width of tables for visual consistency */
+  margin: 0 auto var(--spacing-md);
+  width: 100%;
+}
+
+/* Adjust blockquotes to have more balanced width */
+.content-quote {
+  max-width: 700px;
+  margin: var(--spacing-lg) auto;
+  /* ...existing styles... */
+}
+
+/* Adjust reference boxes to align with tables */
+.reference-box {
+  max-width: 700px;
+  margin: var(--spacing-md) auto;
+  /* ...existing styles... */
+}
+
+/* Specific table configurations with better mobile support */
 .table-grid.four-col {
   grid-template-columns: minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(
       100px,
       0.8fr
     ) minmax(160px, 1.2fr);
-  max-width: 900px; /* Prevent excessive stretching on large screens */
+  max-width: 900px;
 }
 
-.table-grid.three-col {
-  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
-  max-width: 700px; /* Prevent excessive stretching on large screens */
-}
-
+.table-grid.three-col,
 .circuits-table {
-  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
-  max-width: 700px; /* Maintain comfortable reading width */
+  /* Reduce minimum width of first column to prevent left cutoff */
+  grid-template-columns: minmax(40px, 50px) minmax(140px, 1fr) minmax(
+      140px,
+      1.2fr
+    );
+  max-width: 700px;
 }
 
-/* Base table grid styles */
-.table-grid {
-  display: grid;
-  min-width: 600px; /* Ensures table is wide enough on mobile */
-  gap: 1px;
-  background-color: var(--border-color);
-  margin: 0; /* Remove margin as it's now on the container */
+/* Table cells that need more space */
+.number-column {
+  min-width: 40px; /* Ensure number column is always visible */
+  /* ...existing styles... */
 }
 
-.circuits-table {
-  grid-template-columns: 40px auto 1fr; /* Set columns for circuits table */
-  min-width: 500px; /* Slightly narrower for the circuits table */
-}
-
-.table-header {
-  background-color: var(--bg-tertiary);
-  padding: var(--spacing-sm);
-  font-weight: bold;
-  text-align: center;
-}
-
-.table-cell {
-  background-color: var(--bg-secondary);
-  padding: var(--spacing-sm);
-  text-align: center;
-}
-
-.table-span-3 {
-  grid-column: span 3;
-}
-
-.alt-row {
-  background-color: var(--bg-primary);
-}
-
+/* Make cell highlight more visible */
 .highlight {
   font-weight: bold;
-}
-
-.number-column {
-  font-weight: bold;
-  text-align: center;
-  padding-right: 0;
-}
-
-.page-footer-nav {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin: var(--spacing-lg) 0;
-}
-
-.nav-button {
-  padding: var(--spacing-xs) var(--spacing-md);
-  background-color: var(--bg-tertiary);
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.nav-button:hover {
-  background-color: var(--accent-primary);
-  color: var(--bg-primary);
-  text-decoration: none;
-}
-
-/* Table styles */
-.table-container {
-  width: 100%;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  margin: var(--spacing-md) 0;
-  /* Add subtle visual cue for scrolling capability */
-  background-image: linear-gradient(
-      to right,
-      var(--bg-secondary),
-      var(--bg-secondary)
-    ),
-    linear-gradient(to right, var(--bg-secondary), var(--bg-secondary)),
-    linear-gradient(to right, rgba(0, 153, 204, 0.3), rgba(255, 255, 255, 0)),
-    linear-gradient(to left, rgba(0, 153, 204, 0.3), rgba(255, 255, 255, 0));
-  background-position: left center, right center, left center, right center;
-  background-repeat: no-repeat;
-  background-size: 20px 100%, 20px 100%, 15px 100%, 15px 100%;
-  background-attachment: local, local, scroll, scroll;
+  background-color: var(--bg-tertiary); /* Add subtle highlight background */
 }
 
 /* Table styles - Fixed for proper horizontal scrolling */
@@ -771,10 +736,9 @@ ul {
 
 /* Specific table configurations - with optimized widths */
 .table-grid.four-col {
-  grid-template-columns: minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(
-      100px,
-      0.8fr
-    ) minmax(160px, 1.2fr);
+  grid-template-columns:
+    minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(100px, 0.8fr)
+    minmax(160px, 1.2fr);
   max-width: 900px; /* Prevent excessive stretching on large screens */
 }
 
@@ -804,5 +768,25 @@ ul {
     padding: var(--spacing-xs) 0;
     color: var(--accent-primary);
     font-size: var(--font-size-sm);
+  }
+
+  /* Improve mobile display of tables by ensuring proper padding */
+  .table-container {
+    padding: 0 0 var(--spacing-md) 0;
+  }
+
+  /* Make the scroll indicator more prominent on mobile */
+  .table-container::before {
+    padding: var(--spacing-sm) 0;
+    font-weight: bold;
+  }
+
+  /* Ensure table columns maintain proper widths on narrow screens */
+  .table-grid.three-col,
+  .circuits-table {
+    grid-template-columns: minmax(40px, 50px) minmax(120px, 1fr) minmax(
+        140px,
+        1.2fr
+      );
   }
 }
