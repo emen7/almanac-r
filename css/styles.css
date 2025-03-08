@@ -703,21 +703,21 @@ ul {
 /* Create balanced content containers for text around tables */
 .content-section {
   max-width: 700px; /* Match the max-width of tables for visual consistency */
-  margin: 0 auto var(--spacing-md);
+  margin: 0 0 var(--spacing-md);
   width: 100%;
 }
 
 /* Adjust blockquotes to have more balanced width */
 .content-quote {
   max-width: 700px;
-  margin: var(--spacing-lg) auto;
+  margin: var(--spacing-lg) 0;
   /* ...existing styles... */
 }
 
 /* Adjust reference boxes to align with tables */
 .reference-box {
   max-width: 700px;
-  margin: var(--spacing-md) auto;
+  margin: var(--spacing-md) 0;
   /* ...existing styles... */
 }
 
@@ -948,4 +948,44 @@ sup,
   font-size: var(--font-size-sm);
   margin-bottom: var(--spacing-xs);
   opacity: 0; /* Hidden by default */
+}
+
+/* Left-align content sections instead of centering them */
+.content-section {
+  max-width: 700px;
+  margin: 0 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* Left-align blockquotes */
+.content-quote {
+  max-width: 700px;
+  margin: var(--spacing-lg) 0;
+  /* ...existing styles... */
+}
+
+/* Left-align reference boxes */
+.reference-box {
+  max-width: 700px;
+  margin: var(--spacing-md) 0;
+  /* ...existing styles... */
+}
+
+/* Adjust table column widths for better proportions */
+.circuits-table {
+  grid-template-columns: 30px minmax(120px, 1fr) minmax(150px, 1fr) !important;
+  max-width: 500px !important; /* Make gravity circuits table narrower */
+  gap: 1px;
+}
+
+/* Remove vertical line between number column and circuits */
+.table-grid.three-col {
+  grid-template-columns: 40px minmax(120px, 1fr) minmax(140px, 1fr);
+  max-width: 600px;
+  border-collapse: collapse;
+}
+
+/* Tighten column spacing for specific tables */
+#absolute-gravity .table-grid {
+  column-gap: 2px !important;
 }
