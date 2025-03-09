@@ -1089,3 +1089,65 @@ sup,
   justify-content: flex-end; /* Align to the left side of the cell */
   padding-right: var(--spacing-lg); /* Add even more right padding */
 }
+
+/* Make the outer card fit its content more snugly for gravity circuits - with constrained width */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md); /* Consistent padding all around */
+  max-width: 50%; /* Constrain to 50% of screen width */
+  min-width: 500px; /* Ensure minimum width for small screens */
+  margin: 0 auto; /* Keep it centered */
+}
+
+/* Consistent width for all elements in the gravity circuits section */
+#absolute-gravity .table-container,
+#absolute-gravity .table-grid,
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 100%; /* Make all elements use the full width of their container */
+  width: 100%; /* Ensure they take up the full width */
+  margin-left: 0; /* Remove auto margins */
+  margin-right: 0;
+}
+
+/* Small adjustments to spacing between elements */
+#absolute-gravity .table-container {
+  margin-bottom: var(--spacing-sm);
+}
+
+#absolute-gravity .content-quote {
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+#absolute-gravity .reference-box {
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+/* Make the outer card fit its content more snugly for gravity circuits */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md)
+    var(--spacing-md); /* Reduce padding all around */
+  max-width: fit-content; /* Let the panel width adjust to its content */
+  margin: 0 auto; /* Keep it centered */
+}
+
+/* Adjust spacing between elements within the card */
+#absolute-gravity .table-container {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm); /* Reduce bottom margin after table */
+}
+
+#absolute-gravity .content-quote {
+  margin-top: var(--spacing-sm); /* Less space before blockquote */
+  margin-bottom: var(--spacing-sm); /* Less space after blockquote */
+  max-width: none; /* Let it match the width of its container */
+  width: 100%;
+}
+
+#absolute-gravity .reference-box {
+  margin-top: var(--spacing-sm); /* Less space before reference box */
+  margin-bottom: 0; /* No bottom margin needed */
+  max-width: none; /* Let it match the width of its container */
+  width: 100%;
+}
