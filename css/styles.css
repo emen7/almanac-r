@@ -1200,3 +1200,34 @@ sup,
   margin-left: 0;
   margin-right: 0;
 }
+
+/* Fix table scrolling after content container width reduction */
+.content-container .table-container {
+  max-width: 100%; /* Allow table container to use full width of content container */
+  overflow-x: auto; /* Ensure horizontal scrolling works */
+}
+
+/* Ensure tables can be wider than their container when needed */
+.content-container .table-grid {
+  min-width: min-content; /* Ensure minimum content width */
+  width: max-content; /* Allow to grow as needed */
+  max-width: none; /* Remove max-width constraint to allow proper scrolling */
+}
+
+/* Fix blockquote word-wrap */
+.content-quote {
+  word-wrap: break-word; /* Enable proper word wrapping */
+  overflow-wrap: break-word; /* Modern browsers */
+  width: 100%; /* Use full width of container */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Make specific adjustments for the absolute gravity section */
+#absolute-gravity .table-container {
+  width: 100%; /* Use full width available */
+  overflow-x: auto; /* Ensure horizontal scrolling */
+}
+
+#absolute-gravity .content-quote {
+  max-width: 100%; /* Use full width of parent */
+}
