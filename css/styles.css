@@ -82,6 +82,26 @@ body {
   padding: 0 var(--spacing-md);
 }
 
+/* Content Container - Reduced width for a more focused reading experience */
+.content-container {
+  max-width: 60%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Make sure the container remains readable on smaller screens */
+@media (max-width: 1200px) {
+  .content-container {
+    max-width: 80%; /* Less restrictive on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    max-width: 100%; /* Full width on mobile */
+  }
+}
+
 /* Typography */
 h1,
 h2,
@@ -1150,4 +1170,33 @@ sup,
   margin-bottom: 0; /* No bottom margin needed */
   max-width: none; /* Let it match the width of its container */
   width: 100%;
+}
+
+/* Clean up conflicting rules - earlier in file */
+/* Remove or comment out these conflicting rules that appear earlier in the CSS */
+/*
+#absolute-gravity .panel-content {
+  padding-top: 0; 
+  max-width: 500px; 
+  margin: 0 auto;
+}
+*/
+
+/* Adjust width of the outer card - THIS will be our single source of truth */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md);
+  max-width: 550px; /* Explicit fixed width instead of percentage */
+  margin: 0 auto;
+  /* No min-width constraint to allow proper shrinking */
+}
+
+/* Make sure table and quote stay within the container bounds */
+#absolute-gravity .table-container,
+#absolute-gravity .table-grid,
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
