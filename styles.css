@@ -1,0 +1,1298 @@
+/* Master Universe Almanac - Modern CSS */
+
+/* CSS Variables for Theming */
+:root {
+  /* Dark Theme (Default) */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent-primary: #0099cc; /* Original cyan accent */
+  --accent-secondary: #008080; /* Original teal accent */
+  --accent-tertiary: #063971; /* Original blue accent */
+  --link-color: #99ccff;
+  --link-hover: #ffffff;
+  --border-color: #444;
+  --font-main: "Roboto", "Verdana", sans-serif;
+  --panel-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --header-bg: linear-gradient(to bottom, #1a1a1a, #121212);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Font Sizes */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+}
+
+/* Light Theme Variables */
+.light-theme {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e9e9e9;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-primary: #0066cc;
+  --accent-secondary: #008080;
+  --accent-tertiary: #063971;
+  --link-color: #0066cc;
+  --link-hover: #004499;
+  --border-color: #dddddd;
+  --panel-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --header-bg: linear-gradient(to bottom, #ffffff, #f5f5f5);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Content Container - Reduced width for a more focused reading experience */
+.content-container {
+  max-width: 60%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Make sure the container remains readable on smaller screens */
+@media (max-width: 1200px) {
+  .content-container {
+    max-width: 80%; /* Less restrictive on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    max-width: 100%; /* Full width on mobile */
+  }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: var(--spacing-md);
+}
+
+/* Header Styles */
+.site-header {
+  background: var(--header-bg);
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-banner {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-lg) 0;
+  background-image: url("../michaelsbannerH2.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 150px;
+}
+
+.site-title {
+  font-size: var(--font-size-4xl);
+  color: var(--accent-primary);
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.site-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+}
+
+/* Navigation */
+.main-nav {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list li {
+  margin: var(--spacing-xs) var(--spacing-sm);
+}
+
+.nav-list a {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  white-space: nowrap;
+}
+
+/* Settings Menu */
+.settings-container {
+  position: absolute;
+  right: var(--spacing-md);
+  top: var(--spacing-md);
+}
+
+.settings-button {
+  background: var(--bg-tertiary);
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: 4px;
+  min-width: 200px;
+  box-shadow: var(--panel-shadow);
+  z-index: 100;
+}
+
+.settings-dropdown button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  padding: var(--spacing-sm);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.settings-dropdown button:hover {
+  background: var(--bg-tertiary);
+}
+
+.theme-icon,
+.settings-icon {
+  margin-right: var(--spacing-sm);
+}
+
+.font-size-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+}
+
+.font-size-controls button {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--border-color);
+  margin: 0 2px;
+}
+
+/* Content Panels */
+.almanac-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.subsection-title {
+  font-size: var(--font-size-xl);
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.section-navigation {
+  margin: var(--spacing-md) 0;
+}
+
+.section-navigation a {
+  margin: 0 var(--spacing-sm);
+}
+
+.content-panel {
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--panel-shadow);
+  overflow: hidden;
+}
+
+.panel-title {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-primary);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--font-size-xl);
+}
+
+.panel-content {
+  padding: var(--spacing-lg);
+}
+
+.scrollable-container {
+  overflow-x: auto;
+}
+
+/* Topic Sections */
+.topic-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.topic-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.topic-list {
+  list-style-type: none;
+  padding-left: var(--spacing-lg);
+}
+
+.topic-list li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.topic-list a {
+  display: inline-block;
+  padding: var(--spacing-xs) 0;
+}
+
+/* Topic Sections - Enhanced for better responsiveness */
+.topic-sections-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.topic-section {
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  padding: var(--spacing-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topic-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.topic-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Resources Panel */
+.resources-panel {
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--panel-shadow);
+}
+
+.resources-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.resources-group h3 {
+  color: var(--accent-secondary);
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+.resources-list {
+  list-style-type: none;
+}
+
+.resources-list li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-image {
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-credit {
+  font-size: var(--font-size-sm);
+  color: var (--accent-secondary);
+  text-align: right;
+}
+
+.footer-site-link {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-quote {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list li {
+    margin: var(--spacing-xs) 0;
+  }
+
+  .header-banner {
+    padding: var(--spacing-md) 0;
+    min-height: 100px;
+  }
+
+  .topic-sections-container {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-section {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .site-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .panel-content {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Focus Styles for Accessibility */
+:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to content for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-primary);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Page-specific styles for divinity.htm */
+.part-nav,
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.nav-current {
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.page-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var (--spacing-md);
+}
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.item-list li {
+  padding-left: var(--spacing-sm);
+}
+
+.content-quote {
+  background-color: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-primary);
+  padding: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.reference-box {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.reference-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.editor-note {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-sm);
+  border-left: 2px solid var(--border-color);
+}
+
+.content-subtitle {
+  color: var(
+    --accent-primary
+  ); /* Changed from var(--accent-tertiary) to match main title color */
+  margin-bottom: var(--spacing-md);
+  font-weight: 500; /* Add a bit of weight for better readability */
+}
+
+.numbered-list {
+  padding-left: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+.numbered-list li {
+  margin-bottom: var (--spacing-sm);
+}
+
+.footnote {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+}
+
+.table-grid {
+  display: grid;
+  min-width: 600px; /* Ensures table is wide enough on mobile */
+  gap: 1px;
+  background-color: var(--border-color);
+  margin: 0; /* Remove margin as it's now on the container */
+}
+
+.circuits-table {
+  grid-template-columns: 40px auto 1fr; /* Set columns for circuits table */
+  min-width: 500px; /* Slightly narrower for the circuits table */
+}
+
+.table-header {
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-sm);
+  font-weight: bold;
+  text-align: center;
+}
+
+.table-cell {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+/* Row highlighting instead of individual cells */
+.highlight-row {
+  font-weight: bold;
+  background-color: var(--bg-tertiary);
+}
+
+/* Number column styling - Ensure consistent padding with higher specificity */
+.number-column {
+  font-weight: bold;
+  text-align: center;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md); /* Consistent padding on all sides */
+  background-color: var(--bg-tertiary);
+  width: 40px;
+  min-width: 40px;
+}
+
+/* Specific rule for the absolute gravity table number column */
+#absolute-gravity .number-column {
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md); /* Ensure consistent padding */
+}
+
+.page-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.nav-button {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+}
+
+/* Table styles */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: var(--spacing-md) 0;
+  display: flex; /* Center the tables horizontally */
+  justify-content: center; /* Center the tables horizontally */
+  flex-direction: column; /* Stack the scroll indicator above the table */
+  position: relative; /* For positioning elements */
+  padding: 0;
+  border: none;
+}
+
+/* Move scroll indicator ABOVE the table */
+.table-container::before {
+  content: "◀ Scroll horizontally ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
+
+/* Show scroll indicator when needed (added by JS) */
+.table-container.scrollable::before {
+  opacity: 0.8; /* Make visible */
+}
+
+/* Ensure tables start from the left edge properly on mobile */
+.table-grid {
+  margin-left: 0;
+  padding-left: 0;
+  min-width: 100%;
+  width: max-content; /* Use natural content size */
+}
+
+/* Create balanced content containers for text around tables */
+.content-section {
+  max-width: 700px; /* Match the max-width of tables for visual consistency */
+  margin: 0 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* Adjust blockquotes to have more balanced width */
+.content-quote {
+  max-width: 700px;
+  margin: var(--spacing-lg) 0;
+  /* ...existing styles... */
+}
+
+/* Adjust reference boxes to align with tables */
+.reference-box {
+  max-width: 700px;
+  margin: var(--spacing-md) 0;
+  /* ...existing styles... */
+}
+
+/* Specific table configurations with better mobile support */
+.table-grid.four-col {
+  grid-template-columns:
+    minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(100px, 0.8fr)
+    minmax(160px, 1.2fr);
+  max-width: 900px;
+}
+
+.table-grid.three-col,
+.circuits-table {
+  /* Reduce minimum width of first column to prevent left cutoff */
+  grid-template-columns: minmax(40px, 50px) minmax(140px, 1fr) minmax(
+      140px,
+      1.2fr
+    );
+  max-width: 700px;
+}
+
+/* Table cells that need more space */
+.number-column {
+  min-width: 40px; /* Ensure number column is always visible */
+  /* ...existing styles... */
+}
+
+/* Make cell highlight more visible */
+.highlight {
+  font-weight: bold;
+  background-color: var(--bg-tertiary); /* Add subtle highlight background */
+}
+
+/* Table styles - Fixed for proper horizontal scrolling */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: var(--spacing-md) 0;
+  display: flex; /* Center the tables horizontally */
+  justify-content: center; /* Center the tables horizontally */
+}
+
+/* Base table grid styles */
+.table-grid {
+  display: grid;
+  gap: 1px;
+  background-color: var(--border-color);
+  margin: 0;
+  /* Set optimal widths for readability and appearance */
+  width: max-content; /* Use the natural content size */
+  max-width: 100%; /* Ensure it doesn't overflow the container */
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+}
+
+/* Specific table configurations - with optimized widths */
+.table-grid.four-col {
+  grid-template-columns:
+    minmax(140px, 1fr) minmax(180px, 1.5fr) minmax(100px, 0.8fr)
+    minmax(160px, 1.2fr);
+  max-width: 900px; /* Prevent excessive stretching on large screens */
+}
+
+.table-grid.three-col {
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Prevent excessive stretching on large screens */
+}
+
+.circuits-table {
+  grid-template-columns: 50px minmax(180px, 1fr) minmax(200px, 1.2fr);
+  max-width: 700px; /* Maintain comfortable reading width */
+}
+
+/* Add a subtle indicator for mobile users */
+@media (max-width: 768px) {
+  /* Other responsive styles that DON'T affect tables */
+  .site-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* ...other non-table related responsive styles... */
+
+  .table-container::after {
+    content: "◀ Scroll ▶";
+    display: block;
+    text-align: center;
+    padding: var(--spacing-xs) 0;
+    color: var(--accent-primary);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Improve mobile display of tables by ensuring proper padding */
+  .table-container {
+    padding: 0 0 var(--spacing-md) 0;
+  }
+
+  /* Make the scroll indicator more prominent on mobile */
+  .table-container::before {
+    padding: var(--spacing-sm) 0;
+    font-weight: bold;
+  }
+
+  /* Ensure table columns maintain proper widths on narrow screens */
+  .table-grid.three-col,
+  .circuits-table {
+    grid-template-columns: minmax(40px, 50px) minmax(120px, 1fr) minmax(
+        140px,
+        1.2fr
+      );
+  }
+}
+
+/* Table styles - Improved for better visibility and scroll indication */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--spacing-md) 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 0;
+  border: none;
+}
+
+/* Simplify scroll indicator text and position it ONLY ABOVE the table */
+.table-container::before {
+  content: "◀ Scroll ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
+
+/* Show scroll indicator when needed */
+.table-container.scrollable::before {
+  opacity: 0.8;
+}
+
+/* Remove the duplicate scroll indicator that appears below */
+.table-container::after {
+  content: none;
+}
+
+/* Improved footnote and superscript styling */
+sup,
+.footnote-ref {
+  color: var(--accent-primary);
+  font-weight: normal;
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.footnote {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
+}
+
+.footnote sup {
+  color: var(--accent-primary);
+  margin-right: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  /* ...existing styles... */
+
+  /* Remove duplicate scroll indicator on mobile */
+  .table-container::after {
+    content: none;
+  }
+
+  /* Make the scroll indicator more prominent on mobile */
+  .table-container::before {
+    padding: var(--spacing-sm) 0;
+    font-weight: bold;
+  }
+
+  /* ...existing styles... */
+}
+
+/* Table width variations */
+.table-width-60 {
+  max-width: 60%;
+}
+
+.table-width-70 {
+  max-width: 500px; /* Fixed width instead of percentage */
+  width: 100%;
+}
+
+.table-width-80 {
+  max-width: 80%;
+}
+
+/* Muted scrollbar styling */
+.table-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+/* For Firefox */
+.table-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) var(--bg-secondary);
+}
+
+/* Simplify scroll indicator text */
+.table-container::before {
+  content: "◀ Scroll ▶";
+  display: block;
+  text-align: center;
+  padding: var(--spacing-xs) 0;
+  color: var(--accent-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+  opacity: 0; /* Hidden by default */
+}
+
+/* Left-align content sections instead of centering them */
+.content-section {
+  max-width: 700px;
+  margin: 0 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* Left-align blockquotes */
+.content-quote {
+  max-width: 700px;
+  margin: var(--spacing-lg) 0;
+  /* ...existing styles... */
+}
+
+/* Left-align reference boxes */
+.reference-box {
+  max-width: 700px;
+  margin: var(--spacing-md) 0;
+  /* ...existing styles... */
+}
+
+/* Adjust table column widths for better proportions and add right border */
+.circuits-table {
+  grid-template-columns: 30px minmax(120px, 1fr) minmax(150px, 1fr) !important;
+  max-width: 500px !important; /* Make gravity circuits table narrower */
+  gap: 1px;
+  border-right: 1px solid var(--border-color); /* Add right edge vertical line */
+}
+
+/* Reduce space between title and table in the gravity circuits section */
+#absolute-gravity .panel-content {
+  padding-top: 0; /* Remove top padding completely */
+  max-width: 500px; /* Match the width of the table */
+  margin: 0 auto; /* Center the content */
+}
+
+#absolute-gravity .table-container {
+  margin-top: 0; /* Remove top margin from table container */
+}
+
+/* Adjust table column widths for better proportions */
+.circuits-table {
+  grid-template-columns: 30px minmax(120px, 1fr) minmax(150px, 1fr) !important;
+  max-width: 500px !important; /* Make gravity circuits table narrower */
+  gap: 1px;
+}
+
+/* Fix vertical lines on grid tables by adding explicit borders */
+.table-grid {
+  /* ...existing styles... */
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+}
+
+/* Tighten column spacing for specific tables */
+#absolute-gravity .table-grid {
+  column-gap: 2px !important;
+}
+
+/* Adjust blockquote width to match table width in gravity circuits section */
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 500px; /* Match the width of the table */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix the mini column issue in gravity circuits table */
+#absolute-gravity .table-grid {
+  /* Use a simpler grid definition without the mini column */
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr; /* Clean column definition */
+  border: 1px solid var(--border-color); /* Single border around the entire table */
+  border-collapse: collapse;
+  background-color: var(--bg-secondary); /* Match cell background */
+  gap: 0; /* Remove gap between cells */
+}
+
+#absolute-gravity .table-cell {
+  border: 1px solid var(--border-color); /* Add borders to each cell */
+  margin: 0; /* Remove any margin */
+}
+
+#absolute-gravity .table-header {
+  border: 1px solid var(--border-color); /* Add borders to headers */
+  background-color: var(--bg-tertiary);
+}
+
+/* Remove any background color from the grid itself */
+#absolute-gravity .table-grid {
+  background-color: transparent;
+}
+
+/* Table Title Row - Spans all columns - Updated with rounded corners and darker color scheme */
+.table-title {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: var(
+    --bg-tertiary
+  ); /* Use the darker background instead of bright blue */
+  color: var(
+    --accent-primary
+  ); /* Use the accent color for text to match other headings */
+  padding: var(--spacing-md) var(--spacing-sm); /* Increase vertical padding slightly */
+  font-weight: bold;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  border: 1px solid var(--border-color);
+  border-top-left-radius: 8px; /* Round the top corners */
+  border-top-right-radius: 8px;
+}
+
+/* Make the entire table have rounded corners to match the title */
+#absolute-gravity .table-grid {
+  /* ...existing properties... */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the inner elements respect the rounded corners */
+}
+
+/* Fix the grid layout for the gravity circuits table */
+#absolute-gravity .table-grid {
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr; /* Clean column definition */
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+  gap: 0;
+  max-width: 500px;
+}
+
+/* Now that title is in the table, remove excess padding in the panel */
+#absolute-gravity .panel-title {
+  display: none; /* Hide the original panel title since it's now in the table */
+}
+
+#absolute-gravity .panel-content {
+  padding-top: var(--spacing-md);
+}
+
+/* Table Title Row - Updated with left alignment */
+.table-title {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: var(--bg-secondary);
+  color: var(--accent-primary);
+  padding: var(--spacing-md) var(--spacing-sm);
+  font-weight: bold;
+  text-align: left; /* Change from center to left alignment */
+  padding-left: var(--spacing-lg); /* Add extra left padding for title indent */
+  font-size: var(--font-size-xl);
+  border: 1px solid var(--border-color);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Number column styling - Fix the right alignment issue */
+.number-column {
+  font-weight: bold;
+  text-align: center; /* Keep centered vertically */
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  width: 40px;
+  min-width: 40px;
+  display: flex; /* Use flexbox for better control */
+  align-items: center; /* Center vertically */
+  justify-content: flex-end; /* Align to the left side of the cell */
+  padding-right: var(--spacing-lg); /* Add even more right padding */
+}
+
+/* Make the outer card fit its content more snugly for gravity circuits - with constrained width */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md); /* Consistent padding all around */
+  max-width: 50%; /* Constrain to 50% of screen width */
+  min-width: 500px; /* Ensure minimum width for small screens */
+  margin: 0 auto; /* Keep it centered */
+}
+
+/* Consistent width for all elements in the gravity circuits section */
+#absolute-gravity .table-container,
+#absolute-gravity .table-grid,
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 100%; /* Make all elements use the full width of their container */
+  width: 100%; /* Ensure they take up the full width */
+  margin-left: 0; /* Remove auto margins */
+  margin-right: 0;
+}
+
+/* Small adjustments to spacing between elements */
+#absolute-gravity .table-container {
+  margin-bottom: var(--spacing-sm);
+}
+
+#absolute-gravity .content-quote {
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+#absolute-gravity .reference-box {
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+/* Make the outer card fit its content more snugly for gravity circuits */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md)
+    var(--spacing-md); /* Reduce padding all around */
+  max-width: fit-content; /* Let the panel width adjust to its content */
+  margin: 0 auto; /* Keep it centered */
+}
+
+/* Adjust spacing between elements within the card */
+#absolute-gravity .table-container {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm); /* Reduce bottom margin after table */
+}
+
+#absolute-gravity .content-quote {
+  margin-top: var(--spacing-sm); /* Less space before blockquote */
+  margin-bottom: var(--spacing-sm); /* Less space after blockquote */
+  max-width: none; /* Let it match the width of its container */
+  width: 100%;
+}
+
+#absolute-gravity .reference-box {
+  margin-top: var(--spacing-sm); /* Less space before reference box */
+  margin-bottom: 0; /* No bottom margin needed */
+  max-width: none; /* Let it match the width of its container */
+  width: 100%;
+}
+
+/* Clean up conflicting rules - earlier in file */
+/* Remove or comment out these conflicting rules that appear earlier in the CSS */
+/*
+#absolute-gravity .panel-content {
+  padding-top: 0; 
+  max-width: 500px; 
+  margin: 0 auto;
+}
+*/
+
+/* Adjust width of the outer card - THIS will be our single source of truth */
+#absolute-gravity .panel-content {
+  padding: var(--spacing-md);
+  max-width: 550px; /* Explicit fixed width instead of percentage */
+  margin: 0 auto;
+  /* No min-width constraint to allow proper shrinking */
+}
+
+/* Make sure table and quote stay within the container bounds */
+#absolute-gravity .table-container,
+#absolute-gravity .table-grid,
+#absolute-gravity .content-quote,
+#absolute-gravity .reference-box {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Fix table scrolling after content container width reduction */
+.content-container .table-container {
+  max-width: 100%; /* Allow table container to use full width of content container */
+  overflow-x: auto; /* Ensure horizontal scrolling works */
+}
+
+/* Ensure tables can be wider than their container when needed */
+.content-container .table-grid {
+  min-width: min-content; /* Ensure minimum content width */
+  width: max-content; /* Allow to grow as needed */
+  max-width: none; /* Remove max-width constraint to allow proper scrolling */
+}
+
+/* Fix blockquote word-wrap */
+.content-quote {
+  word-wrap: break-word; /* Enable proper word wrapping */
+  overflow-wrap: break-word; /* Modern browsers */
+  width: 100%; /* Use full width of container */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Make specific adjustments for the absolute gravity section */
+#absolute-gravity .table-container {
+  width: 100%; /* Use full width available */
+  overflow-x: auto; /* Ensure horizontal scrolling */
+}
+
+#absolute-gravity .content-quote {
+  max-width: 100%; /* Use full width of parent */
+}
+
+/* Fix scrolling for tables - ensure proper overflow behavior */
+.table-container {
+  overflow-x: auto !important; /* Force scrolling capability */
+  max-width: 100% !important; /* Ensure container doesn't restrict width */
+  width: 100%;
+}
+
+/* Make sure the Four table scrolls properly */
+#absolute-gravity .table-container {
+  overflow-x: auto !important; /* Force horizontal scrolling */
+  max-width: 100% !important; /* Use all available space */
+}
+
+/* Ensure tables maintain sensible widths when possible */
+.table-grid.four-col {
+  grid-template-columns:
+    minmax(100px, 0.8fr) /* Level of Deity - more compact */
+    minmax(120px, 1fr) /* Described as */
+    minmax(80px, 0.6fr) /* Person of Deity - narrower */
+    minmax(100px, 0.9fr); /* Paradise Trinity */
+  max-width: 700px; /* Keep reasonable width when possible */
+  width: max-content; /* But allow expansion when needed */
+}
+
+/* Fix the table-width-70 class */
+.table-width-70 {
+  width: 500px !important; /* Fixed width */
+  max-width: 100% !important; /* But don't exceed container */
+}
+
+/* Ensure any nested table within content-container can scroll */
+.content-container .table-container .table-grid {
+  min-width: min-content; /* Allow minimum content size */
+  width: max-content; /* Allow expansion based on content */
+  max-width: none !important; /* Remove max-width restriction to enable scrolling */
+}
+
+/* CRITICAL TABLE FIXES - Add at the very end of the file */
+/* These will override previous styles */
+
+/* Fix table display for all cases */
+.table-container {
+  display: block !important; /* Use block instead of flex */
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Fix "The Four" table specifically */
+#absolute-gravity .table-grid {
+  width: 440px !important; /* Fixed width */
+  max-width: none !important;
+}
+
+/* Fix table width for the meanings of word God table */
+.table-grid.four-col {
+  width: max-content !important; /* Allow natural width */
+  max-width: none !important; /* Remove restrictions */
+  grid-template-columns:
+    130px /* Level of Deity */
+    150px /* Described as */
+    100px /* Person of Deity */
+    150px; /* Paradise Trinity */
+}
