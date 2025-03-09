@@ -1231,3 +1231,40 @@ sup,
 #absolute-gravity .content-quote {
   max-width: 100%; /* Use full width of parent */
 }
+
+/* Fix scrolling for tables - ensure proper overflow behavior */
+.table-container {
+  overflow-x: auto !important; /* Force scrolling capability */
+  max-width: 100% !important; /* Ensure container doesn't restrict width */
+  width: 100%;
+}
+
+/* Make sure the Four table scrolls properly */
+#absolute-gravity .table-container {
+  overflow-x: auto !important; /* Force horizontal scrolling */
+  max-width: 100% !important; /* Use all available space */
+}
+
+/* Ensure tables maintain sensible widths when possible */
+.table-grid.four-col {
+  grid-template-columns:
+    minmax(100px, 0.8fr) /* Level of Deity - more compact */
+    minmax(120px, 1fr) /* Described as */
+    minmax(80px, 0.6fr) /* Person of Deity - narrower */
+    minmax(100px, 0.9fr); /* Paradise Trinity */
+  max-width: 700px; /* Keep reasonable width when possible */
+  width: max-content; /* But allow expansion when needed */
+}
+
+/* Fix the table-width-70 class */
+.table-width-70 {
+  width: 500px !important; /* Fixed width */
+  max-width: 100% !important; /* But don't exceed container */
+}
+
+/* Ensure any nested table within content-container can scroll */
+.content-container .table-container .table-grid {
+  min-width: min-content; /* Allow minimum content size */
+  width: max-content; /* Allow expansion based on content */
+  max-width: none !important; /* Remove max-width restriction to enable scrolling */
+}
