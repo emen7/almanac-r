@@ -1045,3 +1045,35 @@ sup,
 #absolute-gravity .table-grid {
   background-color: transparent;
 }
+
+/* Table Title Row - Spans all columns */
+.table-title {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: var(--accent-primary);
+  color: var(--bg-secondary);
+  padding: var(--spacing-sm);
+  font-weight: bold;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  border: 1px solid var(--border-color);
+}
+
+/* Fix the grid layout for the gravity circuits table */
+#absolute-gravity .table-grid {
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr; /* Clean column definition */
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+  gap: 0;
+  max-width: 500px;
+}
+
+/* Now that title is in the table, remove excess padding in the panel */
+#absolute-gravity .panel-title {
+  display: none; /* Hide the original panel title since it's now in the table */
+}
+
+#absolute-gravity .panel-content {
+  padding-top: var(--spacing-md);
+}
