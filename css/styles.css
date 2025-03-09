@@ -1046,16 +1046,29 @@ sup,
   background-color: transparent;
 }
 
-/* Table Title Row - Spans all columns */
+/* Table Title Row - Spans all columns - Updated with rounded corners and darker color scheme */
 .table-title {
   grid-column: 1 / -1; /* Span all columns */
-  background-color: var(--accent-primary);
-  color: var(--bg-secondary);
-  padding: var(--spacing-sm);
+  background-color: var(
+    --bg-tertiary
+  ); /* Use the darker background instead of bright blue */
+  color: var(
+    --accent-primary
+  ); /* Use the accent color for text to match other headings */
+  padding: var(--spacing-md) var(--spacing-sm); /* Increase vertical padding slightly */
   font-weight: bold;
   text-align: center;
   font-size: var(--font-size-lg);
   border: 1px solid var(--border-color);
+  border-top-left-radius: 8px; /* Round the top corners */
+  border-top-right-radius: 8px;
+}
+
+/* Make the entire table have rounded corners to match the title */
+#absolute-gravity .table-grid {
+  /* ...existing properties... */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the inner elements respect the rounded corners */
 }
 
 /* Fix the grid layout for the gravity circuits table */
