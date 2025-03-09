@@ -593,56 +593,21 @@ ul {
   background-color: var(--bg-tertiary);
 }
 
-/* Number column styling - Add more right padding */
+/* Number column styling - Ensure consistent padding with higher specificity */
 .number-column {
   font-weight: bold;
   text-align: center;
   padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
-    var(--spacing-md); /* Increase right padding */
+    var(--spacing-md); /* Consistent padding on all sides */
   background-color: var(--bg-tertiary);
   width: 40px;
   min-width: 40px;
 }
 
-/* Specific adjustments for the circuits table number column */
+/* Specific rule for the absolute gravity table number column */
 #absolute-gravity .number-column {
-  padding-left: var(--spacing-md); /* Ensure consistent left padding */
-}
-
-/* Circuits table specific styling */
-.circuits-cell {
-  background-color: var(--bg-secondary); /* Consistent background */
-  font-weight: 500; /* Semi-bold to enhance readability */
-}
-
-/* Alternate row styling for better readability */
-.alt-row {
-  background-color: var(
-    --bg-primary
-  ); /* Subtle distinction for alternate rows */
-}
-
-/* Remove the old highlight class that was applying to cells instead of rows */
-.highlight {
-  /* Remove styling that will be replaced by highlight-row */
-}
-
-.table-span-3 {
-  grid-column: span 3;
-}
-
-.alt-row {
-  background-color: var(--bg-primary);
-}
-
-.highlight {
-  font-weight: bold;
-}
-
-.number-column {
-  font-weight: bold;
-  text-align: center;
-  padding-right: 0;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md); /* Ensure consistent padding */
 }
 
 .page-footer-nav {
@@ -1108,4 +1073,19 @@ sup,
   border: 1px solid var(--border-color);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+/* Number column styling - Fix the right alignment issue */
+.number-column {
+  font-weight: bold;
+  text-align: center; /* Keep centered vertically */
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md);
+  background-color: var(--bg-tertiary);
+  width: 40px;
+  min-width: 40px;
+  display: flex; /* Use flexbox for better control */
+  align-items: center; /* Center vertically */
+  justify-content: flex-end; /* Align to the left side of the cell */
+  padding-right: var(--spacing-lg); /* Add even more right padding */
 }
