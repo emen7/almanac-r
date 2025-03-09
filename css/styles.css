@@ -593,12 +593,12 @@ ul {
   background-color: var(--bg-tertiary);
 }
 
-/* Number column styling - Add more left padding */
+/* Number column styling - Add more right padding */
 .number-column {
   font-weight: bold;
   text-align: center;
-  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm)
-    var(--spacing-md); /* Increase left padding */
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm)
+    var(--spacing-md); /* Increase right padding */
   background-color: var(--bg-tertiary);
   width: 40px;
   min-width: 40px;
@@ -1095,18 +1095,17 @@ sup,
   padding-top: var(--spacing-md);
 }
 
-/* Table Title Row - Updated with larger font size and card-matching background */
+/* Table Title Row - Updated with left alignment */
 .table-title {
   grid-column: 1 / -1; /* Span all columns */
-  background-color: var(--bg-secondary); /* Match the card background color */
-  color: var(--accent-primary); /* Keep the accent color for text */
+  background-color: var(--bg-secondary);
+  color: var(--accent-primary);
   padding: var(--spacing-md) var(--spacing-sm);
   font-weight: bold;
-  text-align: center;
-  font-size: var(
-    --font-size-xl
-  ); /* Increase from var(--font-size-lg) to var(--font-size-xl) */
+  text-align: left; /* Change from center to left alignment */
+  padding-left: var(--spacing-lg); /* Add extra left padding for title indent */
+  font-size: var(--font-size-xl);
   border: 1px solid var(--border-color);
-  border-top-left-radius: 8px; /* Keep the rounded corners */
+  border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
